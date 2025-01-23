@@ -9,7 +9,7 @@ public class Main {
 
         Book book1 = new Book("isbn1", "title1", "author1", 1000.0);
         System.out.println("Adding a book");
-        bookServiceImplementation.addBook(book1);
+        System.out.println(bookServiceImplementation.addBook(book1));
         System.out.println("************\n");
 
         System.out.println("Getting All Books");

@@ -39,16 +39,25 @@ public class BookDaoImplementation implements BookDao {
     }
 
     @Override
-    public void addBook(Book book) throws DaoException {
-        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO books (isbn, title, author, price) values (?, ?, ?, ?);")) {
+    public Book addBook(Book book) throws DaoException {
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO books (isbn, title, author, price) values (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, book.getIsbn());
             pstmt.setString(2, book.getTitle());
             pstmt.setString(3, book.getAuthor());
             pstmt.setDouble(4, book.getPrice());
-
+            System.out.println("HEHE");
             int res = pstmt.executeUpdate();
             if (res > 0) {
-                System.out.println("Successfully Added Book");    // Will improve in assignment 11 using log4j
+                try (ResultSet rs = pstmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        System.out.println("LOL");
+                        book.setId(rs.getInt(1));
+                        System.out.println("LMAO");
+                        return book;
+                    } else {
+                        throw new DaoException("No ID generated for the new customer.");
+                    }
+                }
             }
             else {
                 throw new SQLException();
