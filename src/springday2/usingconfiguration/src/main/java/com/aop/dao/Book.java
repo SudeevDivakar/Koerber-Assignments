@@ -1,4 +1,4 @@
-package com.usingconfigurations.dao;
+package com.aop.dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

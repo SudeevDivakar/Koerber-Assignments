@@ -1,4 +1,4 @@
-package com.usingconfigurations.service.aspect;
+package com.aop.service.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

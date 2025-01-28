@@ -9,7 +9,7 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="com.usingconfigurations" level="info" additivity="false">
+        <Logger name="com.aop" level="info" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="MyFile"/>
         </Logger>

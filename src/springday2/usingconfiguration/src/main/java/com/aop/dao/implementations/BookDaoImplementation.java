@@ -1,7 +1,7 @@
-package com.usingconfigurations.dao.implementations;
+package com.aop.dao.implementations;
 
-import com.usingconfigurations.dao.Book;
-import com.usingconfigurations.dao.BookDao;
+import com.aop.dao.Book;
+import com.aop.dao.BookDao;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

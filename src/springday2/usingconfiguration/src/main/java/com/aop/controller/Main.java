@@ -1,8 +1,8 @@
-package com.usingconfigurations.controller;
+package com.aop.controller;
 
-import com.usingconfigurations.config.AppConfig;
-import com.usingconfigurations.dao.Book;
-import com.usingconfigurations.service.BookService;
+import com.aop.config.AppConfig;
+import com.aop.dao.Book;
+import com.aop.service.BookService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {

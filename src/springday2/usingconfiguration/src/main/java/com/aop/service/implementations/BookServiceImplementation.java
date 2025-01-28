@@ -1,9 +1,9 @@
-package com.usingconfigurations.service.implementations;
+package com.aop.service.implementations;
 
-import com.usingconfigurations.dao.Book;
-import com.usingconfigurations.dao.BookDao;
-import com.usingconfigurations.service.BookService;
-import com.usingconfigurations.service.aspect.Loggable;
+import com.aop.dao.Book;
+import com.aop.dao.BookDao;
+import com.aop.service.BookService;
+import com.aop.service.aspect.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

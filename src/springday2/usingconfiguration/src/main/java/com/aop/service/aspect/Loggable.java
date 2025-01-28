@@ -1,4 +1,4 @@
-package com.usingconfigurations.service.aspect;
+package com.aop.service.aspect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
