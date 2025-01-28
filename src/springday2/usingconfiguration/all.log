@@ -1,0 +1,1 @@
+2025-01-28 11:31:01.536 [main] INFO  com.usingconfigurations.service.aspect.MethodLogger - Method deleteBook took 0 ms to execute.
