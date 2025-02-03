@@ -1,4 +1,4 @@
-package com.bookapp.controller;
+package com.bookapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ErrorDetails {
+public class ErrorDetailsDto {
     private String errorMessage;
     private LocalDateTime timestamp;
     private int errorCode;

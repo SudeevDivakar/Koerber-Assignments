@@ -1,13 +1,13 @@
 package com.bookapp.service;
 
-import com.bookapp.model.Book;
+import com.bookapp.dto.BookDto;
 
 import java.util.List;
 
 public interface BookService {
-    public List<Book> getAll();
-    public Book getById(int id);
-    public Book save(Book book);
+    public List<BookDto> getAll();
+    public BookDto getById(int id);
+    public BookDto save(BookDto bookDto);
     public void deleteById(int id);
-    public Book updateById(Book book, int id);
+    public BookDto updateById(BookDto bookDto, int id);
 }

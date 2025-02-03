@@ -1,6 +1,6 @@
 package com.bookapp.controller;
 
-import com.bookapp.model.Book;
+import com.bookapp.dto.BookDto;
 import com.bookapp.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +22,24 @@ public class BookServiceController {
     }
 
     @GetMapping(path = "books")
-    public ResponseEntity<List<Book>> getBooks() {
+    public ResponseEntity<List<BookDto>> getBooks() {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.getAll());
     }
 
     @GetMapping(path = "books/{id}")
-    public ResponseEntity<Book> getBook(@PathVariable int id) {
+    public ResponseEntity<BookDto> getBook(@PathVariable int id) {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.getById(id));
     }
 
     @PostMapping(path = "books")
-    public ResponseEntity<Book> addBook(@RequestBody @Valid Book book) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.save(book));
+    public ResponseEntity<BookDto> addBook(@RequestBody @Valid BookDto bookDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.save(bookDto));
     }
 
     @PutMapping(path = "books/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable int id, @RequestBody @Valid Book book) {
-        book.setId(id);
-        return ResponseEntity.status(HttpStatus.OK).body(bookService.save(book));
+    public ResponseEntity<BookDto> updateBook(@PathVariable int id, @Valid @RequestBody BookDto bookDto) {
+        bookDto.setId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.updateById(bookDto, id));
     }
 
     @DeleteMapping(path = "books/{id}")
