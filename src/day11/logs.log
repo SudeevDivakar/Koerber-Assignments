@@ -1,0 +1,3 @@
+2025-02-04 21:51:44.863 [main] INFO  com.day11.service.implementations.BookServiceImplementation - Method addBook() executed
+2025-02-04 21:51:44.921 [main] INFO  com.day11.service.implementations.BookServiceImplementation - Method getAllBooks() executed
+2025-02-04 21:51:44.928 [main] INFO  com.day11.service.implementations.BookServiceImplementation - Method updateBook() executed
