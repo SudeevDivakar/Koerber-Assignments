@@ -1,0 +1,1 @@
+2025-02-05 10:48:22.709 [main] INFO  com.aop.service.aspect.MethodLogger - Method deleteBook took 40 ms to execute.
