@@ -1,0 +1,17 @@
+-> We first create a Dockerfile inside the currencyexchange folder (producer) and create an image of it.
+docker build -t currencyexchange .
+
+-> We then open the currencyconversion folder (consumer) and change the code where we configure the url we send a request to,
+@FeignClient(name = "currency-exchange", url = "http://currencyexchange:8000")  // Over here, 'currencyexchange' is the name of the container which we will create for the currencyexchange service.
+
+-> We now set up a dockerfile in the currencyconversion folder and create an image of it
+docker build -t currencyconversion .
+
+-> We then need to set up a docker network with the following command,
+docker network create currency-application
+
+-> We now run the images we created with names matching the ones we mentioned in our api call url (open-feign).
+docker run -d --name currencyexchange -p 8000:8000 --network currency-application currencyexchange
+docker run -d --name currencyconversion -p 8100:8100 --network currency-application currencyconversion
+
+-> The project should work properly now.

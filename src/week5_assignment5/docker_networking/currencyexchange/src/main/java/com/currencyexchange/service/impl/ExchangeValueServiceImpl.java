@@ -1,0 +1,22 @@
+package com.currencyexchange.service.impl;
+
+import com.currencyexchange.entities.ExchangeValue;
+import com.currencyexchange.repo.ExchangeValueRepo;
+import com.currencyexchange.service.ExchangeValueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ExchangeValueServiceImpl implements ExchangeValueService {
+    private final ExchangeValueRepo exchangeValueRepo;
+
+    @Autowired
+    public ExchangeValueServiceImpl(ExchangeValueRepo exchangeValueRepo) {
+        this.exchangeValueRepo = exchangeValueRepo;
+    }
+
+    @Override
+    public ExchangeValue findByFromAndTo(String from, String to) {
+        return exchangeValueRepo.findByFromCurrencyAndToCurrency(from, to);
+    }
+}

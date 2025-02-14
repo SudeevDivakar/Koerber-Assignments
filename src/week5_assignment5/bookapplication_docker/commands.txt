@@ -1,0 +1,55 @@
+CREATING IMAGE USING DOCKERFILE:
+-> Package project using the following command,
+mvn package
+-> Now we add the .jar file created to the dockerfile and create a docker image using the following command,
+docker build -t sudeev123/week5_assignment5 .
+-> Now we can run the docker image using the following command,
+docker run -p 3000:3000 sudeev123/week5_assignment5
+-> We can push the application to docker hub using the following command,
+docker push sudeev123/week5_assignment5
+
+
+
+CREATING IMAGE USING JIB:
+-> To create a docker image using jib, we first add the following plugin into our pom.xml file,
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>3.4.1</version>
+    <configuration>
+        <from>
+            <image>eclipse-temurin:21-jre</image>
+        </from>
+        <to>
+            <image>sudeev123/${project.artifactId}_jib:${version}</image>
+        </to>
+    </configuration>
+</plugin>
+-> Now we can create a docker image using the command,
+mvn compile jib:dockerBuild
+-> We can push the application to docker hub using the following command,
+docker push sudeev123/week5_assignment5
+
+
+
+CREATING IMAGE USING BUILDPACK:
+-> To create an image using buildpack, we first add the following configuration into our pom.xml file,
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <configuration>
+        <image>
+            <name>sudeev123/${project.artifactId}_build_pack:${version}</name>
+        </image>
+        <excludes>
+            <exclude>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+            </exclude>
+        </excludes>
+    </configuration>
+</plugin>
+-> Now we can create a docker image using the command,
+mvn spring-boot:build-image
+-> We can push the application to docker hub using the following command,
+docker push sudeev123/week5_assignment5
