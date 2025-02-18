@@ -1,4 +1,4 @@
-package com.java9.features;
+package java9;
 import  java.util.*;
 class Foo{
     @SafeVarargs

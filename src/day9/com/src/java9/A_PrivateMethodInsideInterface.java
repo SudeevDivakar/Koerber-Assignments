@@ -1,7 +1,7 @@
-package com.java9.features;
+package java9;
 //private method inside an interface
 
- interface Java8DBLogging {
+interface Java8DBLogging {
     default void logInfo(String message) {
        logHelper(message, "Info");
     }
