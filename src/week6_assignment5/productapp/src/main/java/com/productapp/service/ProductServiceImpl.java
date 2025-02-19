@@ -27,6 +27,10 @@ public class ProductServiceImpl implements ProductService {
         return mongoTemplate.insert(book);
     }
 
+    public List<Product> saveMultiple(List<Product> products) {
+        return mongoTemplate.insertAll(products).stream().toList();
+    }
+
     @Override
     public Product update(String id, Product book) {
         Query query = new Query();
@@ -44,6 +48,29 @@ public class ProductServiceImpl implements ProductService {
         return book;
     }
 
+    public Product update2(String id, Product book) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").is(id));
+
+        Update update = new Update();
+        update.set("name", book.getName());
+        update.set("qty", book.getQty());
+        update.set("vendor", book.getVendor());
+        update.set("cost", book.getCost());
+
+        return mongoTemplate.findAndModify(query, update, Product.class);
+    }
+
+    public void discount10OnAllProductsAbove1000() {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("cost").gt(1000));
+
+        Update update = new Update();
+        update.multiply("cost", 0.9);
+
+        mongoTemplate.updateMulti(query, update, Product.class);
+    }
+
     @Override
     public void delete(String id) {
         Query query = new Query();
@@ -51,11 +78,25 @@ public class ProductServiceImpl implements ProductService {
         mongoTemplate.findAndRemove(query, Product.class);
     }
 
+    public void deleteAllProductsCostingOver1000() {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("cost").gt(1000));
+        mongoTemplate.findAllAndRemove(query, Product.class);
+    }
+
     @Override
     public Product getById(String id) {
         Query query = new Query();
         query.addCriteria(Criteria.where("id").is(id));
         Product product = mongoTemplate.findOne(query, Product.class);
+        if (product == null) {
+            throw new ProductNotFoundException("Product not found in database");
+        }
+        return product;
+    }
+
+    public Product getById2(String id) {
+        Product product = mongoTemplate.findById(id, Product.class);
         if (product == null) {
             throw new ProductNotFoundException("Product not found in database");
         }
