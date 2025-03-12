@@ -1,0 +1,4 @@
+package com.bookapp.service;
+
+public interface DetailService {
+}
